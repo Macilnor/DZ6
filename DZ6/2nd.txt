@@ -4,4 +4,3 @@ Another text 2
 Another text 3
 Another text 4
 Another text 5
-Another text 6

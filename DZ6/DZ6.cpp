@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <string>
 #include <fstream>
 
 using namespace std;
@@ -165,6 +166,35 @@ string mergeFiles(string firstFile, string secondFile)
 
 }
 
+//Exercise 6.5
+bool findStr()
+{
+    string fname;
+    string keyword;
+    cout << "Enter filename: ";
+    cin >> fname;
+    fname += ".txt";
+    ifstream fin(fname);
+    cout << fname + " find: ";
+    cin >> keyword;
+    if (fin.is_open())
+    {
+        string str;
+        while (!fin.eof())
+        {
+            getline(fin, str);
+            if (str.find(keyword) != string::npos)
+            {
+                fin.close();
+                return true;
+            }
+        }
+    }
+    fin.close();
+    return false;
+
+}
+
 int main()
 {
     //Exercise 6.1
@@ -201,4 +231,9 @@ int main()
     string mergedFile = mergeFiles(firstFile,secondFile);
     cout << firstFile + " and " + secondFile + " merged to " + mergedFile;
     cout << endl;
+    
+    //Exercise 6.5
+    cout << endl << "Exercise 6.5:" << endl;
+    string out = (findStr()) ? "True" : "False";
+    cout << out;
 }
